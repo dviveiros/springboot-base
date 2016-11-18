@@ -1,6 +1,5 @@
 //plugins
 apply plugin: 'java'
-apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
 // Use Java 8 by default
@@ -12,9 +11,6 @@ targetCompatibility = 1.8
 // Version & Group
 group "$groupId"
 version "$versionNumber"
-
-// Main class to be executed
-mainClassName = "hello.SampleController"
 
 buildscript {
     repositories {
