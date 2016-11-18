@@ -35,4 +35,13 @@ dependencies {
     //Spring Boot
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile("org.springframework.boot:spring-boot-devtools")
+}
+
+bootRun {
+    if (project.hasProperty('env')) {
+        args = ["--env=$env", "--spring.profiles.active=$env"]
+    } else {
+        args = ['--env=local', "--spring.profiles.active=local"]
+    }
 }
