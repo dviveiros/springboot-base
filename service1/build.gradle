@@ -1,0 +1,38 @@
+//plugins
+apply plugin: 'java'
+apply plugin: 'application'
+
+// Use Java 8 by default
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+// Version & Group
+group "$groupId"
+version "$versionNumber"
+
+// Main class to be executed
+mainClassName = "hello.SampleController"
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    //Testing libraries
+    testCompile "junit:junit:$junitVersion"
+
+    //Spring Boot
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+}
