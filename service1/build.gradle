@@ -18,10 +18,19 @@ buildscript {
         mavenCentral()
         maven { url "http://repo.spring.io/snapshot" }
         maven { url "http://repo.spring.io/milestone" }
+        maven { url 'http://repo.spring.io/plugins-release' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
     }
+}
+
+configure(allprojects) {
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-maven'
+    apply plugin: 'propdeps-idea'
+    apply plugin: 'propdeps-eclipse'
 }
 
 repositories {
@@ -36,6 +45,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("org.springframework.boot:spring-boot-devtools")
+    optional("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 bootRun {
